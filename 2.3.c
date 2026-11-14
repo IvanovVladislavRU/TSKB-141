@@ -22,15 +22,15 @@ int CheckIfFit(double const a, double const b, double const c);
  * @return 0, если программа выполнена корректно, иначе не 0
  */
 int main() {
-	printf("Введите длину и ширину участка:");
+	printf("Введите длину и ширину участка:\n");
 	double a = getDouble();
 	double b = getDouble();
 	printf("\n");
-	printf("Введите длину и ширину первого дома:");
+	printf("Введите длину и ширину первого дома:\n");
 	double p = getDouble();
 	double q = getDouble();
 	printf("\n");
-	printf("Введите длину и ширину второго дома:");
+	printf("Введите длину и ширину второго дома:\n");
 	double r = getDouble();
 	double s = getDouble();
 	printf("\n");
@@ -54,6 +54,11 @@ double getDouble()
             printf("Error");
             exit(1);
         }
+	if (a<0.0)
+		{
+			printf("Длина/ширина дома/участка не может быть отрицательной");
+			exit(1);
+		}
     return a;
 }
 
