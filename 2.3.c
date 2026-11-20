@@ -1,6 +1,13 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
+
+/**
+ * @brief Проверяет значение на отрицательность. Если это так, то завершает программу и выводит сообщение.
+ * @param a - считанное значение
+ */
+void CheckNegative(a);
 
 /**
  * @brief Считывает с клавиатуры занчение с плавающей точкой
@@ -13,9 +20,9 @@ double getDouble();
  * @param a Длина/Ширина участка
  * @param b Длина/Ширина первого дома
  * @param c Длина/Ширина второго дома
- * @return 1, если могут вместиться, иначе 0
+ * @return True, если могут вместиться, иначе false
  */
-int CheckIfFit(double const a, double const b, double const c);
+bool CheckIfFit(double const a, double const b, double const c);
 
 /**
  * @brief Точка входа в программу
@@ -25,25 +32,39 @@ int main() {
 	printf("Введите длину и ширину участка:\n");
 	double a = getDouble();
 	double b = getDouble();
+	CheckNegativeOrZero(a);
+	CheckNegativeOrZero(b);
 	printf("\n");
 	printf("Введите длину и ширину первого дома:\n");
 	double p = getDouble();
 	double q = getDouble();
+	CheckNegativeOrZero(p);
+	CheckNegativeOrZero(q);
 	printf("\n");
 	printf("Введите длину и ширину второго дома:\n");
 	double r = getDouble();
 	double s = getDouble();
+	CheckNegativeOrZero(r);
+	CheckNegativeOrZero(s);
 	printf("\n");
     if (CheckIfFit(a,p,r)*CheckIfFit(b,q,s)==1)
         {
         printf("Дома можно разместить на данном участке!");
-        return 0;
         }
-    if (CheckIfFit(a,p,r)*CheckIfFit(b,q,s)==0)
+    else
         {
         printf("Дома нельзя разместить на данном участке!");
-        return 0;
         }
+    return 0;
+}
+
+void CheckNegativeOrZero(double a)
+{
+    if (a<=0.0)
+		{
+			printf("Длина/ширина дома/участка не может быть отрицательной/равнятся нулю");
+			exit(1);
+		}
 }
 
 double getDouble()
@@ -54,22 +75,10 @@ double getDouble()
             printf("Error");
             exit(1);
         }
-	if (a<0.0)
-		{
-			printf("Длина/ширина дома/участка не может быть отрицательной");
-			exit(1);
-		}
     return a;
 }
 
-int CheckIfFit(double const a,double const b, double const c)
+bool CheckIfFit(double const a,double const b, double const c)
 {
-    if (a >= (b+c))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    return a >= b+c;
 }
