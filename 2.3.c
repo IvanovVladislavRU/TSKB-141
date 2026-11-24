@@ -47,7 +47,7 @@ int main() {
 	CheckNegativeOrZero(r);
 	CheckNegativeOrZero(s);
 	printf("\n");
-    if (CheckIfFit(a,p,r)*CheckIfFit(b,q,s)==1)
+    if (CheckIfFit(a,p,r)&&CheckIfFit(b,q,s))
         {
         printf("Дома можно разместить на данном участке!");
         }
