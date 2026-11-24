@@ -7,7 +7,7 @@
  * @brief Проверяет значение на отрицательность. Если это так, то завершает программу и выводит сообщение.
  * @param a - считанное значение
  */
-void CheckNegative(a);
+void CheckNegative(const double a);
 
 /**
  * @brief Считывает с клавиатуры занчение с плавающей точкой
@@ -58,7 +58,7 @@ int main() {
     return 0;
 }
 
-void CheckNegativeOrZero(double a)
+void CheckNegativeOrZero(const double a)
 {
     if (a<=0.0)
 		{
